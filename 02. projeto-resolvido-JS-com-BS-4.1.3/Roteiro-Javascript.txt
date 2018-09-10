@@ -70,9 +70,9 @@
 
 14. Criar a função função validaFaixaEtariaFunction() OK!
 
-15. Criar a função validaSexoFunction()
+15. Criar a função validaSexoFunction() Falta escrever "campo de preenchimento obrigatorio"
 
-16. Criar a função validaPreferenciasFunction()
+16. Criar a função validaPreferenciasFunction() Falta escrever "campo de preenchimento obrigatorio"
 
 17. Criar a função validaFunction(e) que manda validar todos os campos.
 

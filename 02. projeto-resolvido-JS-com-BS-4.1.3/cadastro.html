@@ -112,8 +112,17 @@
     </div>
     <script>
         document.querySelector("#id_nome").addEventListener("blur", validaNomeFunction, false);
+
         document.querySelector("#id_email").addEventListener("blur", validaEmailFunction, false);
+
         document.querySelector("#id_faixa_etaria").addEventListener("blur", validaFaixaEtariaFunction, false);
+
+        document.querySelector("#id_masculino").addEventListener("blur", validaSexoFunction, false);
+        document.querySelector("#id_feminino").addEventListener("blur", validaSexoFunction, false);
+
+        document.querySelector("#id_esporte").addEventListener("blur", validaPreferenciasFunction, false);
+        document.querySelector("#id_cinema").addEventListener("blur", validaPreferenciasFunction, false);
+        document.querySelector("#id_literatura").addEventListener("blur", validaPreferenciasFunction, false);
 
         document.querySelector("#id_form").addEventListener("submit", function(e) { validaTudoFunction(e) }, false);
 
@@ -121,7 +130,10 @@
             e.preventDefault();
             let nomeValido = validaNomeFunction();
             let faixaEtariaValido = validaFaixaEtariaFunction();
-            if (nomeValido && faixaEtariaValido) {
+            let sexoValido = validaSexoFunction();
+            let preferencias = validaPreferenciasFunction();
+
+            if (nomeValido && faixaEtariaValido && sexoValido && preferencias) {
                 alert('Tudo OK!')
             }
             else {
@@ -188,6 +200,63 @@
                 return true;
             }
         }
+
+        function validaSexoFunction() {
+            let masculino = document.getElementById('id_masculino').checked;
+            let feminino = document.getElementById('id_feminino').checked;
+
+            let masculino_elem = document.querySelector("#id_masculino");
+            let feminino_elem = document.querySelector("#id_feminino");
+
+            if (!(masculino || feminino)) {
+                masculino_elem.classList.add('is-invalid')
+                masculino_elem.classList.remove('is-valid')
+                feminino_elem.classList.add('is-invalid')
+                feminino_elem.classList.remove('is-valid')
+                document.querySelector("#id_sexo_required").classList.remove("d-none");
+                return false;
+            }
+            else {
+                masculino_elem.classList.remove('is-invalid')
+                masculino_elem.classList.add('is-valid')
+                feminino_elem.classList.remove('is-invalid')
+                feminino_elem.classList.add('is-valid')
+                document.querySelector("#id_sexo_required").classList.add("d-none");
+                return true;
+            }
+        }
+
+        function validaPreferenciasFunction() {
+            let esporte = document.getElementById('id_esporte').checked;
+            let cinema = document.getElementById('id_cinema').checked;
+            let literatura = document.getElementById('id_literatura').checked;
+
+            let esporte_elem = document.querySelector("#id_esporte");
+            let cinema_elem = document.querySelector("#id_cinema");
+            let literatura_elem = document.querySelector("#id_literatura");
+
+            if (!(esporte || cinema || literatura)) {
+                esporte_elem.classList.add('is-invalid')
+                esporte_elem.classList.remove('is-valid')
+                cinema_elem.classList.add('is-invalid')
+                cinema_elem.classList.remove('is-valid')
+                literatura_elem.classList.add('is-invalid')
+                literatura_elem.classList.remove('is-valid')
+                document.querySelector("#id_preferencias_required").classList.remove("d-none");
+                return false;
+            }
+            else {
+                esporte_elem.classList.remove('is-invalid')
+                esporte_elem.classList.add('is-valid')
+                cinema_elem.classList.remove('is-invalid')
+                cinema_elem.classList.add('is-valid')
+                literatura_elem.classList.remove('is-invalid')
+                literatura_elem.classList.add('is-valid')
+                document.querySelector("#id_preferencias_required").classList.add("d-none");
+                return true;
+            }
+        }
+
 
     </script>
 
