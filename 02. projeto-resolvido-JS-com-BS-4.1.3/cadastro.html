@@ -113,14 +113,15 @@
     <script>
         document.querySelector("#id_nome").addEventListener("blur", validaNomeFunction, false);
         document.querySelector("#id_email").addEventListener("blur", validaEmailFunction, false);
+        document.querySelector("#id_faixa_etaria").addEventListener("blur", validaFaixaEtariaFunction, false);
 
         document.querySelector("#id_form").addEventListener("submit", function(e) { validaTudoFunction(e) }, false);
 
         function validaTudoFunction(e) {
             e.preventDefault();
             let nomeValido = validaNomeFunction();
-
-            if (nomeValido) {
+            let faixaEtariaValido = validaFaixaEtariaFunction();
+            if (nomeValido && faixaEtariaValido) {
                 alert('Tudo OK!')
             }
             else {
@@ -168,6 +169,23 @@
                 }
 
 
+            }
+        }
+
+        function validaFaixaEtariaFunction() {
+            let faixa_etaria = document.querySelector("#id_faixa_etaria");
+
+            if (faixa_etaria.value === '0') {
+                faixa_etaria.classList.add('is-invalid')
+                faixa_etaria.classList.remove('is-valid')
+                document.querySelector("#id_faixa_etaria_required").classList.remove("d-none");
+                return false;
+            }
+            else {
+                faixa_etaria.classList.remove('is-invalid')
+                faixa_etaria.classList.add('is-valid')
+                document.querySelector("#id_faixa_etaria_required").classList.add("d-none");
+                return true;
             }
         }
 

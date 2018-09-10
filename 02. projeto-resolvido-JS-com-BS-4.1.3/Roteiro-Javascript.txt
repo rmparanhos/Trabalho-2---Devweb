@@ -68,7 +68,7 @@
 13. Criar a função validaEmailFunction() que deve validar se ele foi informado e se está de acordo com a expressão
     regular acima. OK!
 
-14. Criar a função função validaFaixaEtariaFunction()
+14. Criar a função função validaFaixaEtariaFunction() OK!
 
 15. Criar a função validaSexoFunction()
 
